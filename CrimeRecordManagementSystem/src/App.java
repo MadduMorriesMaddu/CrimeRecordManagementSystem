@@ -42,6 +42,7 @@ public class App {
             int Choice = Integer.parseInt(scanner.nextLine());
 
             switch (Choice) {
+
                 case 1:
 
                     System.out.println("Admin_Name:");
@@ -160,8 +161,7 @@ public class App {
                 default:
                     System.out.println("Invalid choice");
             }
-        }
-        else if(option==2){
+        } else if (option == 2) {
             System.out.println("1.Admin");
             System.out.println("2.User");
             System.out.println("3.Policeman");
@@ -169,10 +169,74 @@ public class App {
 
             int Choice = Integer.parseInt(scanner.nextLine());
 
-            
+            switch (Choice) {
+                case 1:
+                    Boolean login = false;
+                    System.out.println("Admin_Name:");
+                    String Admin_Name = scanner.nextLine();
+                    System.out.println("Password:");
+                    String Password = scanner.nextLine();
+                    String sql = "SELECT * FROM adminlogin WHERE Admin_Name='" + Admin_Name + "' AND Password='" + Password
+                            + "'";
+                    Connection conn = sqlconnect();
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery(sql);
+                    if (rs.next()) {
+                        login = true;
+                        System.out.println("Login Successfull!");
+                    } else {
+                        System.out.println("Invalid Login");
+                    }
+                    conn.close();
+                    break;
+
+                case 2:
+                    Boolean login1 = false;
+                    System.out.println("User_Name:");
+                    String User_Name = scanner.nextLine();
+                    System.out.println("Password:");
+                    String Password1 = scanner.nextLine();
+                    String sql1 = "SELECT * FROM Userlogin WHERE User_Name='" + User_Name + "' AND Password='" + Password1
+                            + "'";
+                    Connection conn1 = sqlconnect();
+                    Statement stmt1 = conn1.createStatement();
+                    ResultSet rs1 = stmt1.executeQuery(sql1);
+                    if (rs1.next()) {
+                        login1 = true;
+                        System.out.println("Login Successfull!");
+                    } else {
+                        System.out.println("Invalid Login");
+                    }  
+                    conn1.close();
+                    break; 
+                    
+                case 3:
+                    Boolean login2 = false;
+                    System.out.println("Police_Name:");
+                    String Police_Name = scanner.nextLine();
+                    System.out.println("Password:");
+                    String Password2 = scanner.nextLine();
+                    String sql2 = "SELECT * FROM Policelogin WHERE Police_Name='" + Police_Name + "' AND Password='" + Password2
+                            + "'";
+                    Connection conn2 = sqlconnect();
+                    Statement stmt2 = conn2.createStatement();
+                    ResultSet rs2 = stmt2.executeQuery(sql2);
+                    if (rs2.next()) {
+                        login2 = true;
+                        System.out.println("Login Successfull!");
+                    } else {
+                        System.out.println("Invalid Login");
+                    }  
+                    conn2.close();
+                    break; 
+                  
+                default:
+                    System.out.println("Invalid choice");    
+    
+
+            }
 
         }
 
     }
-
 }
