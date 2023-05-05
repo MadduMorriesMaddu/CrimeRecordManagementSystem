@@ -43,44 +43,7 @@ public class App {
 
             switch (Choice) {
 
-                case 1:
-
-                    System.out.println("Admin_Name:");
-                    String Admin_Name = scanner.nextLine();
-
-                    System.out.println("Admin_id:");
-                    String Admin_id = scanner.nextLine();
-
-                    System.out.println("Phone Number:");
-                    int Admin_phonenumber = Integer.parseInt(scanner.nextLine());
-                    ;
-
-                    System.out.println("Password:");
-                    String Password = scanner.nextLine();
-
-                    Connection connection = sqlconnect();
-
-                    PreparedStatement statement = connection.prepareStatement(
-                            "INSERT INTO Adminlogin (Admin_Name,Admin_id,Admin_phonenumber,Password) VALUES (?, ?, ?, ?)");
-
-                    // Step 5: Set the values for the PreparedStatement
-                    statement.setString(1, Admin_Name);
-                    statement.setString(2, Admin_id);
-                    statement.setInt(3, Admin_phonenumber);
-                    statement.setString(4, Password);
-
-                    int rowsInserted = statement.executeUpdate();
-                    if (rowsInserted > 0) {
-                        System.out.println("A new user was inserted successfully!");
-                    }
-
-                    ResultSet resultSet = statement.executeQuery("SELECT * FROM Adminlogin");
-                    System.out.println(resultSet);
-                    while (resultSet.next()) {
-                        System.out.println(resultSet.getString(1) + "\t" + resultSet.getString(2) + "\t"
-                                + resultSet.getInt(3) + "\t" + resultSet.getString(4));
-                    }
-                    break;
+                
                 case 2:
 
                     System.out.println("User_Name:");
