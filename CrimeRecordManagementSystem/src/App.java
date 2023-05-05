@@ -176,7 +176,8 @@ public class App {
                     String Admin_Name = scanner.nextLine();
                     System.out.println("Password:");
                     String Password = scanner.nextLine();
-                    String sql = "SELECT * FROM adminlogin WHERE Admin_Name='" + Admin_Name + "' AND Password='" + Password
+                    String sql = "SELECT * FROM adminlogin WHERE Admin_Name='" + Admin_Name + "' AND Password='"
+                            + Password
                             + "'";
                     Connection conn = sqlconnect();
                     Statement stmt = conn.createStatement();
@@ -184,6 +185,14 @@ public class App {
                     if (rs.next()) {
                         login = true;
                         System.out.println("Login Successfull!");
+                        
+                        ResultSet resultSet2 = stmt.executeQuery("SELECT * FROM Entry");
+                    System.out.println(resultSet2);
+                    while (resultSet2.next()) {
+                        System.out.println(resultSet2.getInt(1) + "\t" + resultSet2.getString(2) + "\t"
+                                + resultSet2.getInt(3) + "\t" + resultSet2.getString(4) + "\t" + resultSet2.getString(5));
+
+                    }
                     } else {
                         System.out.println("Invalid Login");
                     }
@@ -196,7 +205,8 @@ public class App {
                     String User_Name = scanner.nextLine();
                     System.out.println("Password:");
                     String Password1 = scanner.nextLine();
-                    String sql1 = "SELECT * FROM Userlogin WHERE User_Name='" + User_Name + "' AND Password='" + Password1
+                    String sql1 = "SELECT * FROM Userlogin WHERE User_Name='" + User_Name + "' AND Password='"
+                            + Password1
                             + "'";
                     Connection conn1 = sqlconnect();
                     Statement stmt1 = conn1.createStatement();
@@ -204,19 +214,67 @@ public class App {
                     if (rs1.next()) {
                         login1 = true;
                         System.out.println("Login Successfull!");
+                        
+                    System.out.println("Entry_case_id:");
+                    
+                    int Entry_case_id = Integer.parseInt(scanner.nextLine());
+
+
+                    System.out.println("Entry_Name:");
+                    String Entry_Name = scanner.nextLine();
+
+                    System.out.println("Phone Number:");
+                    int Entry_phonenumber = Integer.parseInt(scanner.nextLine());
+                    ;
+
+                    System.out.println("Entry_crime:");
+                    String Entry_crime = scanner.nextLine();
+
+                    System.out.println("Entry_date:");
+                    String Entry_date = scanner.nextLine();
+
+                    Connection conn4 = sqlconnect();
+
+                    PreparedStatement statement1 = conn4.prepareStatement(
+                            "INSERT INTO Entry (Entry_case_id,Entry_Name,Entry_phonenumber,Entry_crime,Entry_date) VALUES (?, ?, ?, ?, ?)");
+
+                    statement1.setInt(1, Entry_case_id);
+                    statement1.setString(2, Entry_Name);
+                    statement1.setInt(3, Entry_phonenumber);
+                    statement1.setString(4, Entry_crime);
+                    statement1.setString(5, Entry_date);
+
+                    int rowsInserted1 = statement1.executeUpdate();
+                    if (rowsInserted1 > 0) {
+                        System.out.println("A new entry was inserted successfully!");
+                    }
+
+                    ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM Entry");
+                    System.out.println(resultSet1);
+                    while (resultSet1.next()) {
+                        System.out.println(resultSet1.getInt(1) + "\t" + resultSet1.getString(2) + "\t"
+                                + resultSet1.getInt(3) + "\t" + resultSet1.getString(4) + "\t" + resultSet1.getString(5));
+                    }
+                    conn4.close();
+
+
+
+
+
                     } else {
                         System.out.println("Invalid Login");
-                    }  
+                    }
                     conn1.close();
-                    break; 
-                    
+                    break;
+
                 case 3:
                     Boolean login2 = false;
                     System.out.println("Police_Name:");
                     String Police_Name = scanner.nextLine();
                     System.out.println("Password:");
                     String Password2 = scanner.nextLine();
-                    String sql2 = "SELECT * FROM Policelogin WHERE Police_Name='" + Police_Name + "' AND Password='" + Password2
+                    String sql2 = "SELECT * FROM Policelogin WHERE Police_Name='" + Police_Name + "' AND Password='"
+                            + Password2
                             + "'";
                     Connection conn2 = sqlconnect();
                     Statement stmt2 = conn2.createStatement();
@@ -224,15 +282,16 @@ public class App {
                     if (rs2.next()) {
                         login2 = true;
                         System.out.println("Login Successfull!");
+
+                        
                     } else {
                         System.out.println("Invalid Login");
-                    }  
+                    }
                     conn2.close();
-                    break; 
-                  
+                    break;
+
                 default:
-                    System.out.println("Invalid choice");    
-    
+                    System.out.println("Invalid choice");
 
             }
 
