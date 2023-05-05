@@ -84,6 +84,42 @@ public class App {
                     break;
                 
                 case 2:
+                    System.out.println("User_Name:");
+                    String User_Name = scanner.nextLine();
+
+                    System.out.println("User_id:");
+                    String User_id = scanner.nextLine();
+
+                    System.out.println("Phone Number:");
+                    int User_phonenumber = Integer.parseInt(scanner.nextLine());
+                    ;
+
+                    System.out.println("Password:");
+                    String Password1 = scanner.nextLine();
+
+                    Connection conn = sqlconnect();
+
+                    PreparedStatement statement1 = conn.prepareStatement(
+                            "INSERT INTO Userlogin (User_Name,User_id,User_phonenumber,Password) VALUES (?, ?, ?, ?)");
+
+                    statement1.setString(1, User_Name);
+                    statement1.setString(2, User_id);
+                    statement1.setInt(3, User_phonenumber);
+                    statement1.setString(4, Password1);
+
+                    int rowsInserted1 = statement1.executeUpdate();
+                    if (rowsInserted1 > 0) {
+                        System.out.println("A new user was inserted successfully!");
+                    }
+
+                    ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM Userlogin");
+                    System.out.println(resultSet1);
+                    while (resultSet1.next()) {
+                        System.out.println(resultSet1.getString(1) + "\t" + resultSet1.getString(2) + "\t"
+                                + resultSet1.getInt(3) + "\t" + resultSet1.getString(4));
+                    }
+                    conn.close();
+                    break;
 
                    
 
