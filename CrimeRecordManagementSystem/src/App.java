@@ -40,7 +40,6 @@ public class App {
 
             switch (Choice) {
 
-
                 case 1:
 
                     System.out.println("Admin_Name:");
@@ -79,8 +78,8 @@ public class App {
                                 + resultSet.getInt(3) + "\t" + resultSet.getString(4));
                     }
                     break;
-                
                 case 2:
+
                     System.out.println("User_Name:");
                     String User_Name = scanner.nextLine();
 
@@ -117,8 +116,6 @@ public class App {
                     }
                     conn.close();
                     break;
-
-                   
 
                 case 3:
                     System.out.println("Police_Name:");
