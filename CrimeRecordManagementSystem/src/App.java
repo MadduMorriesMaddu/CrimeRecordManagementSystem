@@ -1,10 +1,7 @@
 import java.sql.*;
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
 import com.mysql.*;
-
+import javax.swing.JOptionPane;
 public class App {
     static Connection sqlconnect() {
         try {
@@ -185,14 +182,15 @@ public class App {
                     if (rs.next()) {
                         login = true;
                         System.out.println("Login Successfull!");
-                        
-                        ResultSet resultSet2 = stmt.executeQuery("SELECT * FROM Entry");
-                    System.out.println(resultSet2);
-                    while (resultSet2.next()) {
-                        System.out.println(resultSet2.getInt(1) + "\t" + resultSet2.getString(2) + "\t"
-                                + resultSet2.getInt(3) + "\t" + resultSet2.getString(4) + "\t" + resultSet2.getString(5));
 
-                    }
+                        ResultSet resultSet2 = stmt.executeQuery("SELECT * FROM Entry");
+                        System.out.println(resultSet2);
+                        while (resultSet2.next()) {
+                            System.out.println(resultSet2.getInt(1) + "\t" + resultSet2.getString(2) + "\t"
+                                    + resultSet2.getInt(3) + "\t" + resultSet2.getString(4) + "\t"
+                                    + resultSet2.getString(5));
+
+                        }
                     } else {
                         System.out.println("Invalid Login");
                     }
@@ -214,52 +212,48 @@ public class App {
                     if (rs1.next()) {
                         login1 = true;
                         System.out.println("Login Successfull!");
-                        
-                    System.out.println("Entry_case_id:");
-                    
-                    int Entry_case_id = Integer.parseInt(scanner.nextLine());
 
+                        System.out.println("Entry_case_id:");
 
-                    System.out.println("Entry_Name:");
-                    String Entry_Name = scanner.nextLine();
+                        int Entry_case_id = Integer.parseInt(scanner.nextLine());
 
-                    System.out.println("Phone Number:");
-                    int Entry_phonenumber = Integer.parseInt(scanner.nextLine());
-                    ;
+                        System.out.println("Entry_Name:");
+                        String Entry_Name = scanner.nextLine();
 
-                    System.out.println("Entry_crime:");
-                    String Entry_crime = scanner.nextLine();
+                        System.out.println("Phone Number:");
+                        int Entry_phonenumber = Integer.parseInt(scanner.nextLine());
+                        ;
 
-                    System.out.println("Entry_date:");
-                    String Entry_date = scanner.nextLine();
+                        System.out.println("Entry_crime:");
+                        String Entry_crime = scanner.nextLine();
 
-                    Connection conn4 = sqlconnect();
+                        System.out.println("Entry_date:");
+                        String Entry_date = scanner.nextLine();
 
-                    PreparedStatement statement1 = conn4.prepareStatement(
-                            "INSERT INTO Entry (Entry_case_id,Entry_Name,Entry_phonenumber,Entry_crime,Entry_date) VALUES (?, ?, ?, ?, ?)");
+                        Connection conn4 = sqlconnect();
 
-                    statement1.setInt(1, Entry_case_id);
-                    statement1.setString(2, Entry_Name);
-                    statement1.setInt(3, Entry_phonenumber);
-                    statement1.setString(4, Entry_crime);
-                    statement1.setString(5, Entry_date);
+                        PreparedStatement statement1 = conn4.prepareStatement(
+                                "INSERT INTO Entry (Entry_case_id,Entry_Name,Entry_phonenumber,Entry_crime,Entry_date) VALUES (?, ?, ?, ?, ?)");
 
-                    int rowsInserted1 = statement1.executeUpdate();
-                    if (rowsInserted1 > 0) {
-                        System.out.println("A new entry was inserted successfully!");
-                    }
+                        statement1.setInt(1, Entry_case_id);
+                        statement1.setString(2, Entry_Name);
+                        statement1.setInt(3, Entry_phonenumber);
+                        statement1.setString(4, Entry_crime);
+                        statement1.setString(5, Entry_date);
 
-                    ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM Entry");
-                    System.out.println(resultSet1);
-                    while (resultSet1.next()) {
-                        System.out.println(resultSet1.getInt(1) + "\t" + resultSet1.getString(2) + "\t"
-                                + resultSet1.getInt(3) + "\t" + resultSet1.getString(4) + "\t" + resultSet1.getString(5));
-                    }
-                    conn4.close();
+                        int rowsInserted1 = statement1.executeUpdate();
+                        if (rowsInserted1 > 0) {
+                            System.out.println("A new entry was inserted successfully!");
+                        }
 
-
-
-
+                        ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM Entry");
+                        System.out.println(resultSet1);
+                        while (resultSet1.next()) {
+                            System.out.println(resultSet1.getInt(1) + "\t" + resultSet1.getString(2) + "\t"
+                                    + resultSet1.getInt(3) + "\t" + resultSet1.getString(4) + "\t"
+                                    + resultSet1.getString(5));
+                        }
+                        conn4.close();
 
                     } else {
                         System.out.println("Invalid Login");
@@ -283,7 +277,39 @@ public class App {
                         login2 = true;
                         System.out.println("Login Successfull!");
 
+                        System.out.println("Pol_Name:");
+                        String Pol_Name = scanner.nextLine();
+
+                        System.out.println("status:");
+                        String status = scanner.nextLine();
                         
+                        System.out.println("Entry_case_id:");
+
+                        int Entry_case_id = Integer.parseInt(scanner.nextLine());
+
+                        Connection conn4 = sqlconnect();
+
+                        PreparedStatement statement2 = conn4.prepareStatement(
+                                "INSERT INTO Police (Pol_Name,status,Entry_case_id) VALUES (?, ?, ?)");
+
+                        statement2.setString(2, Pol_Name);
+                        statement2.setString(3, status);
+                        statement2.setInt(4, Entry_case_id);
+
+                        int rowsInserted1 = statement2.executeUpdate();
+                        if (rowsInserted1 > 0) {
+                            System.out.println("A new entry was inserted successfully!");
+                        }
+
+                        ResultSet resultSet1 = statement2.executeQuery("SELECT * FROM Police");
+                        System.out.println(resultSet1);
+                        while (resultSet1.next()) {
+                            System.out.println(resultSet1.getString(1) + "\t" + resultSet1.getString(2) + "\t"
+                                    + resultSet1.getInt(3));
+                        }
+                        conn4.close();
+
+
                     } else {
                         System.out.println("Invalid Login");
                     }
