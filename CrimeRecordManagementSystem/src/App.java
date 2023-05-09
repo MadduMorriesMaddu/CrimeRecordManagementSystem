@@ -191,6 +191,14 @@ public class App {
                                     + resultSet2.getString(5));
 
                         }
+                        ResultSet resultSet4 = stmt.executeQuery("SELECT * FROM Police");
+                        System.out.println(resultSet4);
+                        while (resultSet4.next()) {
+                            System.out.println( resultSet4.getString(1) + "\t"
+                                     + resultSet4.getString(2) + "\t"
+                                    + resultSet4.getInt(3));
+
+                        }
                     } else {
                         System.out.println("Invalid Login");
                     }
@@ -287,28 +295,32 @@ public class App {
 
                         int Entry_case_id = Integer.parseInt(scanner.nextLine());
 
+                        System.out.println("Pol_Rank:");
+                        String Pol_Rank = scanner.nextLine();
+
                         Connection conn4 = sqlconnect();
 
                         PreparedStatement statement2 = conn4.prepareStatement(
-                                "INSERT INTO Police (Pol_Name,status,Entry_case_id) VALUES (?, ?, ?)");
+                                "INSERT INTO Police (Pol_Name,status,Entry_case_id,Pol_Rank) VALUES (?, ?, ?, ?)");
 
-                        statement2.setString(2, Pol_Name);
-                        statement2.setString(3, status);
-                        statement2.setInt(4, Entry_case_id);
-
+                        statement2.setString(1, Pol_Name);
+                        statement2.setString(2, status);
+                        statement2.setInt(3, Entry_case_id);
+                        statement2.setString(4,Pol_Rank);
+                        
                         int rowsInserted1 = statement2.executeUpdate();
                         if (rowsInserted1 > 0) {
                             System.out.println("A new entry was inserted successfully!");
                         }
-
+                        
                         ResultSet resultSet1 = statement2.executeQuery("SELECT * FROM Police");
                         System.out.println(resultSet1);
                         while (resultSet1.next()) {
                             System.out.println(resultSet1.getString(1) + "\t" + resultSet1.getString(2) + "\t"
-                                    + resultSet1.getInt(3));
+                                    + resultSet1.getInt(3) + resultSet1.getString(4));
                         }
                         conn4.close();
-
+                        
 
                     } else {
                         System.out.println("Invalid Login");
