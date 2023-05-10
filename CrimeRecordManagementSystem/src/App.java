@@ -2,6 +2,7 @@ import java.sql.*;
 import java.util.Scanner;
 import com.mysql.*;
 import javax.swing.JOptionPane;
+
 public class App {
     static Connection sqlconnect() {
         try {
@@ -17,24 +18,24 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("********");
-        System.out.println("*   CRIME RECORD MANAGEMENT SYSTEM   *");
-        System.out.println("********");
+        System.out.println("\033[0m********************************************************************");
+        System.out.println("\033[31m*           CRIME RECORD MANAGEMENT SYSTEM                 *");
+        System.out.println("\033[0m********************************************************************");
 
-        System.out.println(" New Register or login");
-        System.out.println("1.Registration");
-        System.out.println("2.login");
-        System.out.println("********************");
-        System.out.print("Enter your option:");
+        System.out.println("\u001B[32m New Register or login\u001B[0m");
+        System.out.println("\u001B[32m1.Registration\u001B[0m");
+        System.out.println("\u001B[32m2.login\u001B[0m");
+        System.out.println("\u001B[35m********************\u001B[0m");
+        System.out.print("\u001B[33mEnter your option:\u001B[0m");
 
         int option = Integer.parseInt(scanner.nextLine());
 
         if (option == 1) {
 
-            System.out.println("1.Admin");
-            System.out.println("2.User");
-            System.out.println("3.Policeman");
-            System.out.print("Enter your choice:");
+            System.out.println("\u001B[31m1.Admin");
+            System.out.println("\u001B[34m2.User");
+            System.out.println("\u001B[32m3.Policeman");
+            System.out.print("\u001B[33mEnter your choice:\u001B[0m");
 
             int Choice = Integer.parseInt(scanner.nextLine());
 
@@ -42,17 +43,16 @@ public class App {
 
                 case 1:
 
-                    System.out.println("Admin_Name:");
+                    System.out.println("\033[31mAdmin_Name:\033[0m");
                     String Admin_Name = scanner.nextLine();
 
-                    System.out.println("Admin_id:");
+                    System.out.println("\033[31mAdmin_id:\033[0m");
                     String Admin_id = scanner.nextLine();
 
-                    System.out.println("Phone Number:");
+                    System.out.println("\033[31mPhone Number:\033[0m");
                     int Admin_phonenumber = Integer.parseInt(scanner.nextLine());
-                    ;
 
-                    System.out.println("Password:");
+                    System.out.println("\033[31mPassword:\033[0m");
                     String Password = scanner.nextLine();
 
                     Connection connection = sqlconnect();
@@ -80,17 +80,17 @@ public class App {
                     break;
                 case 2:
 
-                    System.out.println("User_Name:");
+                    System.out.println("\033[34mUser_Name:\033[0m");
                     String User_Name = scanner.nextLine();
 
-                    System.out.println("User_id:");
+                    System.out.println("\033[34mUser_id:\033[0m");
                     String User_id = scanner.nextLine();
 
-                    System.out.println("Phone Number:");
+                    System.out.println("\033[34mPhone Number:\033[0m");
                     int User_phonenumber = Integer.parseInt(scanner.nextLine());
                     ;
 
-                    System.out.println("Password:");
+                    System.out.println("\033[34mPassword:\033[0m");
                     String Password1 = scanner.nextLine();
 
                     Connection conn = sqlconnect();
@@ -118,17 +118,17 @@ public class App {
                     break;
 
                 case 3:
-                    System.out.println("Police_Name:");
+                    System.out.println("\033[32mPolice_Name:\033[0m");
                     String Police_Name = scanner.nextLine();
 
-                    System.out.println("Police_id:");
+                    System.out.println("\033[32mPolice_id:\033[0m");
                     String Police_id = scanner.nextLine();
 
-                    System.out.println("Phone Number:");
+                    System.out.println("\033[32mPhone Number:\033[0m");
                     int Police_phonenumber = Integer.parseInt(scanner.nextLine());
                     ;
 
-                    System.out.println("Password:");
+                    System.out.println("\033[32mPassword:\033[0m");
                     String Password2 = scanner.nextLine();
 
                     Connection conn1 = sqlconnect();
@@ -156,22 +156,22 @@ public class App {
                     break;
 
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println("\033[0;31mInvalid Choice");
             }
         } else if (option == 2) {
-            System.out.println("1.Admin");
-            System.out.println("2.User");
-            System.out.println("3.Policeman");
-            System.out.print("Enter your choice:");
+            System.out.println("\u001B[31m1.Admin");
+            System.out.println("\u001B[34m2.User");
+            System.out.println("\u001B[32m3.Policeman");
+            System.out.print("\u001B[33mEnter your choice:\u001B[0m");
 
             int Choice = Integer.parseInt(scanner.nextLine());
 
             switch (Choice) {
                 case 1:
                     Boolean login = false;
-                    System.out.println("Admin_Name:");
+                    System.out.println("\033[31mAdmin_Name:\033[0m");
                     String Admin_Name = scanner.nextLine();
-                    System.out.println("Password:");
+                    System.out.println("\033[31mPassword:\033[0m");
                     String Password = scanner.nextLine();
                     String sql = "SELECT * FROM adminlogin WHERE Admin_Name='" + Admin_Name + "' AND Password='"
                             + Password
@@ -181,7 +181,7 @@ public class App {
                     ResultSet rs = stmt.executeQuery(sql);
                     if (rs.next()) {
                         login = true;
-                        System.out.println("Login Successfull!");
+                        System.out.println("\u001B[32mLogin Successful!\u001B[0m");
 
                         ResultSet resultSet2 = stmt.executeQuery("SELECT * FROM Entry");
                         System.out.println(resultSet2);
@@ -194,22 +194,22 @@ public class App {
                         ResultSet resultSet4 = stmt.executeQuery("SELECT * FROM Police");
                         System.out.println(resultSet4);
                         while (resultSet4.next()) {
-                            System.out.println( resultSet4.getString(1) + "\t"
-                                     + resultSet4.getString(2) + "\t"
-                                    + resultSet4.getInt(3));
+                            System.out.println(resultSet4.getString(1) + "\t"
+                                    + resultSet4.getString(2) + "\t"
+                                    + resultSet4.getInt(3)+ "\t" + resultSet4.getString(4));
 
                         }
                     } else {
-                        System.out.println("Invalid Login");
+                        System.out.println("\u001B[31mInvalid Login\u001B[0m");
                     }
                     conn.close();
                     break;
 
                 case 2:
                     Boolean login1 = false;
-                    System.out.println("User_Name:");
+                    System.out.println("\033[34mUser_Name:\033[0m");
                     String User_Name = scanner.nextLine();
-                    System.out.println("Password:");
+                    System.out.println("\033[34mPassword:\033[0m");
                     String Password1 = scanner.nextLine();
                     String sql1 = "SELECT * FROM Userlogin WHERE User_Name='" + User_Name + "' AND Password='"
                             + Password1
@@ -219,23 +219,21 @@ public class App {
                     ResultSet rs1 = stmt1.executeQuery(sql1);
                     if (rs1.next()) {
                         login1 = true;
-                        System.out.println("Login Successfull!");
+                        System.out.println("\u001B[32mLogin Successful!\u001B[0m");
 
-                        System.out.println("Entry_case_id:");
-
+                        System.out.println("\u001B[33mEntry_case_id:\u001B[0m");
                         int Entry_case_id = Integer.parseInt(scanner.nextLine());
 
-                        System.out.println("Entry_Name:");
+                        System.out.println("\u001B[33mEntry_Name:\u001B[0m");
                         String Entry_Name = scanner.nextLine();
 
-                        System.out.println("Phone Number:");
+                        System.out.println("\u001B[33mPhone Number:\u001B[0m");
                         int Entry_phonenumber = Integer.parseInt(scanner.nextLine());
-                        ;
 
-                        System.out.println("Entry_crime:");
+                        System.out.println("\u001B[33mEntry_crime:\u001B[0m");
                         String Entry_crime = scanner.nextLine();
 
-                        System.out.println("Entry_date:");
+                        System.out.println("\u001B[33mEntry_date:\u001B[0m");
                         String Entry_date = scanner.nextLine();
 
                         Connection conn4 = sqlconnect();
@@ -264,16 +262,16 @@ public class App {
                         conn4.close();
 
                     } else {
-                        System.out.println("Invalid Login");
+                        System.out.println("\u001B[31mInvalid Login\u001B[0m");
                     }
                     conn1.close();
                     break;
 
                 case 3:
                     Boolean login2 = false;
-                    System.out.println("Police_Name:");
+                    System.out.println("\u001B[35mPolice_Name:");
                     String Police_Name = scanner.nextLine();
-                    System.out.println("Password:");
+                    System.out.println("\033[32mPassword:\033[0m");
                     String Password2 = scanner.nextLine();
                     String sql2 = "SELECT * FROM Policelogin WHERE Police_Name='" + Police_Name + "' AND Password='"
                             + Password2
@@ -283,19 +281,19 @@ public class App {
                     ResultSet rs2 = stmt2.executeQuery(sql2);
                     if (rs2.next()) {
                         login2 = true;
-                        System.out.println("Login Successfull!");
+                        System.out.println("\u001B[32mLogin Successful!\u001B[0m");
 
-                        System.out.println("Pol_Name:");
+                        System.out.println("\u001B[32mPol_Name:");
                         String Pol_Name = scanner.nextLine();
 
-                        System.out.println("status:");
+                        System.out.println("\u001B[33mstatus:");
                         String status = scanner.nextLine();
-                        
-                        System.out.println("Entry_case_id:");
+
+                        System.out.println("\033[0;35mEntry_case_id:");
 
                         int Entry_case_id = Integer.parseInt(scanner.nextLine());
 
-                        System.out.println("Pol_Rank:");
+                        System.out.println("\u001B[32mPol_Rank:");
                         String Pol_Rank = scanner.nextLine();
 
                         Connection conn4 = sqlconnect();
@@ -306,13 +304,13 @@ public class App {
                         statement2.setString(1, Pol_Name);
                         statement2.setString(2, status);
                         statement2.setInt(3, Entry_case_id);
-                        statement2.setString(4,Pol_Rank);
-                        
+                        statement2.setString(4, Pol_Rank);
+
                         int rowsInserted1 = statement2.executeUpdate();
                         if (rowsInserted1 > 0) {
                             System.out.println("A new entry was inserted successfully!");
                         }
-                        
+
                         ResultSet resultSet1 = statement2.executeQuery("SELECT * FROM Police");
                         System.out.println(resultSet1);
                         while (resultSet1.next()) {
@@ -320,16 +318,15 @@ public class App {
                                     + resultSet1.getInt(3) + resultSet1.getString(4));
                         }
                         conn4.close();
-                        
 
                     } else {
-                        System.out.println("Invalid Login");
+                        System.out.println("\u001B[31mInvalid Login\u001B[0m");
                     }
                     conn2.close();
                     break;
 
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println("\033[0;31mInvalid Choice");
 
             }
 
