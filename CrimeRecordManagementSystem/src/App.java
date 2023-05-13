@@ -19,22 +19,24 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\033[0m********************************************************************");
-        System.out.println("\033[31m*           CRIME RECORD MANAGEMENT SYSTEM                 *");
+        System.out.println("\033[31m|*          CRIME RECORD MANAGEMENT SYSTEM                      *|");
         System.out.println("\033[0m********************************************************************");
 
-        System.out.println("\u001B[32m New Register or login\u001B[0m");
-        System.out.println("\u001B[32m1.Registration\u001B[0m");
-        System.out.println("\u001B[32m2.login\u001B[0m");
-        System.out.println("\u001B[35m********************\u001B[0m");
+        System.out.println("|\u001B[35m************************\u001B[0m|");
+        System.out.println("|\u001B[32m  New Register or login \u001B[0m|");
+        System.out.println("|\u001B[32m1.Registration\u001B[0m          |");
+        System.out.println("|\u001B[32m2.login\u001B[0m                 |");
+        System.out.println("|\u001B[35m************************\u001B[0m|");
         System.out.print("\u001B[33mEnter your option:\u001B[0m");
 
         int option = Integer.parseInt(scanner.nextLine());
 
         if (option == 1) {
-
-            System.out.println("\u001B[31m1.Admin");
-            System.out.println("\u001B[34m2.User");
-            System.out.println("\u001B[32m3.Policeman");
+            System.out.println("-----------------------");
+            System.out.println("|\u001B[31m1.Admin    |");
+            System.out.println("|\u001B[34m2.User     |");
+            System.out.println("|\u001B[32m3.Policeman|");
+            System.out.println("-----------------------");
             System.out.print("\u001B[33mEnter your choice:\u001B[0m");
 
             int Choice = Integer.parseInt(scanner.nextLine());
@@ -159,9 +161,11 @@ public class App {
                     System.out.println("\033[0;31mInvalid Choice");
             }
         } else if (option == 2) {
-            System.out.println("\u001B[31m1.Admin");
-            System.out.println("\u001B[34m2.User");
-            System.out.println("\u001B[32m3.Policeman");
+            System.out.println("-----------------------");
+            System.out.println("|\u001B[31m1.Admin    |");
+            System.out.println("|\u001B[34m2.User     |");
+            System.out.println("|\u001B[32m3.Policeman|");
+            System.out.println("-----------------------");
             System.out.print("\u001B[33mEnter your choice:\u001B[0m");
 
             int Choice = Integer.parseInt(scanner.nextLine());
@@ -196,7 +200,7 @@ public class App {
                         while (resultSet4.next()) {
                             System.out.println(resultSet4.getString(1) + "\t"
                                     + resultSet4.getString(2) + "\t"
-                                    + resultSet4.getInt(3)+ "\t" + resultSet4.getString(4));
+                                    + resultSet4.getInt(3) + "\t" + resultSet4.getString(4));
 
                         }
                     } else {
@@ -309,6 +313,7 @@ public class App {
                         int rowsInserted1 = statement2.executeUpdate();
                         if (rowsInserted1 > 0) {
                             System.out.println("A new entry was inserted successfully!");
+
                         }
 
                         ResultSet resultSet1 = statement2.executeQuery("SELECT * FROM Police");
