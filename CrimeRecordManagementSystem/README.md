@@ -17,7 +17,7 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
 
-# CRIME RECORD MANAGEMENT SYATEM
+CRIME RECORD MANAGEMENT SYATEM
 
 The code is a Crime Record Management System implemented in Java using a MySQL database for storing and retrieving data. It allows users to register and login as different types of users, namely Admin, User, and Policeman.
 
@@ -32,10 +32,8 @@ If the user chooses login (option 2), they are again prompted to select their ro
 Overall, the code demonstrates basic functionality for user registration, login, and interaction with a MySQL database for storing and retrieving crime records. It utilizes JDBC for database connectivity and prepared statements for secure SQL queries.
 
 
-
-
-
-
-
-
-
+# OUTPUT
+sample output for creating new user and allowing admin to access to see all details
+![image](./Image/1.png)
+![image](./Image/2.png)
+![image](./Image/3.png)
