@@ -203,6 +203,54 @@ public class App {
                                     + resultSet4.getInt(3) + "\t" + resultSet4.getString(4));
 
                         }
+                        if (Choice == 1) {
+                            // Admin login code here
+                        
+                            if (login) {
+                                System.out.println("Select table to delete from:");
+                                System.out.println("1. Entry");
+                                System.out.println("2. Police");
+                                System.out.print("Enter your choice: ");
+                                int deleteChoice = Integer.parseInt(scanner.nextLine());
+                        
+                                switch (deleteChoice) {
+                                    case 1:
+                                        System.out.print("Enter the Entry_case_id to delete: ");
+                                        int deleteEntryCaseId = Integer.parseInt(scanner.nextLine());
+                                        Connection connDelete1 = sqlconnect();
+                                        PreparedStatement deleteStatement1 = connDelete1.prepareStatement("DELETE FROM Entry WHERE Entry_case_id = ?");
+                                        deleteStatement1.setInt(1, deleteEntryCaseId);
+                                        int rowsDeleted1 = deleteStatement1.executeUpdate();
+                                        if (rowsDeleted1 > 0) {
+                                            System.out.println("Entry record deleted successfully!");
+                                        } else {
+                                            System.out.println("Entry record not found.");
+                                        }
+                                        connDelete1.close();
+                                        break;
+                        
+                                    case 2:
+                                        System.out.print("Enter the Pol_Name to delete: ");
+                                        String deletePolName = scanner.nextLine();
+                                        Connection connDelete2 = sqlconnect();
+                                        PreparedStatement deleteStatement2 = connDelete2.prepareStatement("DELETE FROM Police WHERE Pol_Name = ?");
+                                        deleteStatement2.setString(1, deletePolName);
+                                        int rowsDeleted2 = deleteStatement2.executeUpdate();
+                                        if (rowsDeleted2 > 0) {
+                                            System.out.println("Police record deleted successfully!");
+                                        } else {
+                                            System.out.println("Police record not found.");
+                                        }
+                                        connDelete2.close();
+                                        break;
+                        
+                                    default:
+                                        System.out.println("Invalid choice.");
+                                        break;
+                                }
+                            }
+                        }
+                        
                     } else {
                         System.out.println("\u001B[31mInvalid Login\u001B[0m");
                     }
