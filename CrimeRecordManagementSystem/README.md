@@ -34,6 +34,4 @@ Overall, the code demonstrates basic functionality for user registration, login,
 
 # OUTPUT
 sample output for creating new user and allowing admin to access to see all details
-![image](./Image/1.png)
-![image](./Image/2.png)
-![image](./Image/3.png)
+shown in 1,2,3.png
