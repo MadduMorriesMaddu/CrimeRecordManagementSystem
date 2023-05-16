@@ -17,17 +17,25 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
 
-CRIME RECORD MANAGEMENT SYATEM
+# CRIME RECORD MANAGEMENT SYATEM
 
-In this project we are gathering crimanls information. Here we have 3 interfaces
+The code is a Crime Record Management System implemented in Java using a MySQL database for storing and retrieving data. It allows users to register and login as different types of users, namely Admin, User, and Policeman.
 
-1. Before going in we are  creating 5 tables in mysql and connect to VScode. First table is Adminlogin where we insert admin details like name,id,password,phone number we created name and password for Admin to login.  Second table is Userlogin where we insert user details like name,id,password,phone number we created name and password for police to login.Third table is Police login where we insert police details like name,id,password,phone number we created name and password for Police to login.
-2. After creating the login tables we need create other two tables one is for user giving a complaint and other table for police man taking the complaintand writing the case progress and inchare who took the case.
-3. After creating the required tables in coding part first we are showing options that new to rgister or login option.
-4. If we select option 1 it redirect to new registration again it show 3 options that you want register as Admin, User ,Policeman.
-5. If you select one of the them, then it ask your details and store in respected login tables.
-6. After completing the registration go to option 2 that is Login part.
-7. There again shows 3 options want to login as Admin, User, Police man. If your name and password is correct
-it opens the Admin has access to see all the User details and police man details. The User can only file a complain . Policeman access the incharge and gives the case status .
+The sqlconnect() method establishes a connection with the MySQL database using the JDBC driver. It returns a Connection object that can be used for executing SQL queries.
+
+The main method is the entry point of the program. It starts by displaying a menu with options for registration or login. The user is prompted to enter their choice.
+
+If the user chooses registration (option 1), they are further prompted to select their role (Admin, User, or Policeman). Depending on the role chosen, the user is asked to provide specific information such as name, ID, phone number, and password. The user's information is then inserted into the respective table in the database using prepared statements.
+
+If the user chooses login (option 2), they are again prompted to select their role. After providing their name and password, the program executes a SQL query to check if the provided credentials match the records in the corresponding table. If the login is successful, the user is shown a success message and specific functionalities based on their role. For example, an admin can view the existing entries and delete records from the Entry and Police tables.
+
+Overall, the code demonstrates basic functionality for user registration, login, and interaction with a MySQL database for storing and retrieving crime records. It utilizes JDBC for database connectivity and prepared statements for secure SQL queries.
+
+
+
+
+
+
+
 
 
