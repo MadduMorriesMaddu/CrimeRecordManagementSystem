@@ -29,6 +29,8 @@ If the user chooses registration (option 1), they are further prompted to select
 
 If the user chooses login (option 2), they are again prompted to select their role. After providing their name and password, the program executes a SQL query to check if the provided credentials match the records in the corresponding table. If the login is successful, the user is shown a success message and specific functionalities based on their role. For example, an admin can view the existing entries and delete records from the Entry and Police tables.
 
+The program also includes code related to the admin's ability to delete records from the Entry and Police tables.
+
 Overall, the code demonstrates basic functionality for user registration, login, and interaction with a MySQL database for storing and retrieving crime records. It utilizes JDBC for database connectivity and prepared statements for secure SQL queries.
 
 
